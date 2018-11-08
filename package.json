@@ -1,0 +1,16 @@
+{
+    "name": "node-red-contrib-LCD20x4-I2C",
+    "version": "0.0.1",
+    "description": "Driver for 20x4 LCD Display",
+    "keywords": [
+        "node-red"
+    ],
+    "node-red": {
+        "nodes": {
+            "LCD20x4-I2C": "LCD20x4-I2C/LCD20x4-I2C.js"
+        }
+    },
+    "scripts": {
+        "test": "mocha LCD20x4-I2C/LCD20x4-I2C.js"
+    }
+}
