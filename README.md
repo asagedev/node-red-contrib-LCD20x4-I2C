@@ -1,4 +1,4 @@
-This node will accept an object `msg.msgs`.  If the object passed does not contain 4 lines, the difference is filled with blank lines.
+This node will accept an object `msg.payload.msgs`.  If the object passed does not contain 4 lines, the difference is filled with blank lines.
 
 Line data structure:
 
@@ -13,28 +13,28 @@ If there is an error it will be logged to Node-RED and display an error on the L
 
 Object format:
 ```
-{
-    "msgs": [
+msg.payload = {
+    msgs: [
         {
-            "msg": "string",
-            "pos": number,
-            "center": "boolean"
+            msg: "string",
+            pos: number,
+            center: "boolean"
         },
         {
-            "msg": "string",
-            "pos": number,
-            "center": "boolean"
+            msg: "string",
+            pos: number,
+            center: "boolean"
         },
         {
-            "msg": "string",
-            "pos": number,
-            "center": "boolean"
+            msg: "string",
+            pos: number,
+            center: "boolean"
         },
         {
-            "msg": "string",
-            "pos": number,
-            "center": "boolean"
+            msg: "string",
+            pos: number,
+            center: "boolean"
         }
     ]
-}
+};
 ```
