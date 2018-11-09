@@ -1,4 +1,4 @@
-Dependencies: SMBus, enable i2c in raspiconfig
+Dependencies: SMBus, enable i2c in raspi-config
 ```
 sudo apt-get install python-smbus
 sudo raspi-config
