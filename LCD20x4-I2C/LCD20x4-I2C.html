@@ -43,7 +43,7 @@
 </script>
 
 <script type="text/x-red" data-help-name="LCD20x4-I2C">
-    <p>This node will accept an object msg.msgs.  If the object passed does not contain 4 
+    <p>This node will accept an object msg.payload.msgs.  If the object passed does not contain 4 
     lines, the difference is filled with blank lines.</p>
     <p>Line data structure:</p>
     <ul>
@@ -60,30 +60,30 @@
     LCD screen.</p>
 
     <p><pre>Object format:
-{
-    "msgs": [
+msg.payload = {
+    msgs: [
         {
-            "msg": "string",
-            "pos": (number),
-            "center": "true"
+            msg: "string",
+            pos: number,
+            center: "boolean"
         },
         {
-            "msg": "string",
-            "pos": (number),
-            "center": "true"
+            msg: "string",
+            pos: number,
+            center: "boolean"
         },
         {
-            "msg": "string",
-            "pos": (number),
-            "center": "true"
+            msg: "string",
+            pos: number,
+            center: "boolean"
         },
         {
-            "msg": "string",
-            "pos": (number),
-            "center": "true"
+            msg: "string",
+            pos: number,
+            center: "boolean"
         }
     ]
-}
+};
     </pre></p>
 </script>
 
