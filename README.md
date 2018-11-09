@@ -1,3 +1,10 @@
+Dependencies: SMBus, enable i2c in raspiconfig
+```
+sudo apt-get install python-smbus
+sudo raspi-config
+    Interfacing Options>I2C>Enable
+```
+
 This node will accept an object `msg.payload.msgs`.  If the object passed does not contain 4 lines, the difference is filled with blank lines.
 
 Line data structure:
