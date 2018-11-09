@@ -43,6 +43,12 @@
 </script>
 
 <script type="text/x-red" data-help-name="LCD20x4-I2C">
+    <p>Dependencies: SMBus, enable i2c in raspi-config<p>
+    <p><pre>
+sudo apt-get install python-smbus
+sudo raspi-config
+    Interfacing Options>I2C>Enable
+    </pre></p>
     <p>This node will accept an object msg.payload.msgs.  If the object passed does not contain 4 
     lines, the difference is filled with blank lines.</p>
     <p>Line data structure:</p>
