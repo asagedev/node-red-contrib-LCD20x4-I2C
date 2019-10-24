@@ -6,7 +6,7 @@
         "url": "https://github.com/atsage/node-red-contrib-LCD20x4-I2C/issues"
     },
     "name": "node-red-contrib-lcd20x4-i2c",
-    "version": "0.0.3",
+    "version": "0.1.0",
     "description": "Driver for 20x4 LCD Display",
     "license": "MIT",
     "repository": {
