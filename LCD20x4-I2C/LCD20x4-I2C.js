@@ -30,7 +30,7 @@ module.exports = function(RED) {
         else{
             this.speed = false;
         }
-		if (n.address !== undefined){
+        if (n.address !== undefined){
             this.address = n.address;
         }
         else{
