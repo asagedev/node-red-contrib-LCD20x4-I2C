@@ -6,8 +6,8 @@
         "url": "https://github.com/atsage/node-red-contrib-LCD20x4-I2C/issues"
     },
     "name": "node-red-contrib-lcd20x4-i2c",
-    "version": "0.1.0",
-    "description": "Driver for 20x4 LCD Display",
+    "version": "0.1.1",
+    "description": "Driver for 20x4 HD44780 LCD Display connected via I2C PCF8574",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -17,7 +17,11 @@
         "node-red",
         "20x4",
         "LCD",
-        "20x4 LCD"
+        "20x4 LCD",
+		"PCF8574",
+		"PCF8574T",
+		"PCF8574AT",
+		"HD44780"
     ],
     "node-red": {
         "nodes": {

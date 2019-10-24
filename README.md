@@ -1,3 +1,5 @@
+This node is a driver for 20x4 HD44780 LCD Display connected via I2C PCF8574
+
 Dependencies: SMBus, enable i2c in raspi-config
 ```
 sudo apt-get install python-smbus
