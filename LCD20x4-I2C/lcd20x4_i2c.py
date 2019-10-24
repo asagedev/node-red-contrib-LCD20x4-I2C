@@ -12,6 +12,12 @@ import sys
 import math
 import lcddriver
 
+if len(sys.argv) == 5:
+    CMD = sys.argv[1].lower()
+    LCD_TYPE = sys.argv[2].lower()
+    SCROLL_SPEED = int(sys.argv[3])
+    lcddriver.ADDRESS = int(sys.argv[4], 16)
+
 LCD = lcddriver.lcd()
 STARTUPMSG = ["       SYSTEM       ",
               "       START        ",
@@ -88,11 +94,6 @@ def updatescreen(input_msg, sleep, stop_event):
                 break
             else:
                 time.sleep(sleep*1.5)
-
-if len(sys.argv) == 4:
-    CMD = sys.argv[1].lower()
-    LCD_TYPE = sys.argv[2].lower()
-    SCROLL_SPEED = int(sys.argv[3])
 
 UPDATE_SCREEN_THREAD_STOP = threading.Event()
 UPDATE_SCREEN_THREAD = threading.Thread(target=updatescreen, args=(STARTUPMSG, SCROLL_SPEED, UPDATE_SCREEN_THREAD_STOP))

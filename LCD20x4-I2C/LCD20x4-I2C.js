@@ -30,6 +30,12 @@ module.exports = function(RED) {
         else{
             this.speed = false;
         }
+		if (n.address !== undefined){
+            this.address = n.address;
+        }
+        else{
+            this.address = "0x27";
+        }
 
         if (isNaN(this.speed)){
             node.status({fill:"red",shape:"dot",text:"Scroll Speed Value NaN"});
@@ -43,7 +49,7 @@ module.exports = function(RED) {
         }
 
         if (this.lcdsize == "20x4"){//|| this.lcdsize == "16x2"){ uncomment to enable 16x2 screens when supported
-            node.child = spawn(LCDcommand, ["writelcd",this.lcdsize,this.speed]);
+            node.child = spawn(LCDcommand, ["writelcd",this.lcdsize,this.speed,this.address]);
             node.running = true;
             node.status({fill:"green",shape:"dot",text:"OK"});
         }
