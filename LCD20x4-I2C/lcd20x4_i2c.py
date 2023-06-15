@@ -23,7 +23,7 @@ lcd_error = False;
 try:
     LCD = lcddriver.lcd()
 except:
-    print "LCD Not Found - Check Addess and Connections"
+    print("LCD Not Found - Check Addess and Connections")
     lcd_error = True;
 
 if (not lcd_error):
@@ -51,13 +51,13 @@ if (not lcd_error):
         """Translate string (handles scrolling effect)"""
         global UPDATE_SCREEN_THREAD_STOP
         if (left_min > left_max or right_min > right_max or value < left_min or value > left_max or
-                not isinstance(value, (int, long, float, complex))):
-            if not isinstance(value, (int, long, float, complex)):
+                not isinstance(value, (int, int, float, complex))):
+            if not isinstance(value, (int, int, float, complex)):
                 error = "Scroll Speed Value NaN"
             else:
                 error = "Scroll Speed Value Error"
             updatescreen(ERRORMSG, SCROLL_SPEED, UPDATE_SCREEN_THREAD_STOP)
-            print error
+            print(error)
             return False
         else:
             left_span = left_max - left_min
@@ -110,29 +110,29 @@ if (not lcd_error):
     def pad_str(pos, input_str):
         """Pad leading spaces if pos has a value"""
         global UPDATE_SCREEN_THREAD_STOP
-        if (isinstance(input_str, basestring) and isinstance(pos, (int, long, float, complex)) and
+        if (isinstance(input_str, str) and isinstance(pos, (int, int, float, complex)) and
                 pos > 0 and pos <= 20):
             input_str = " "*(pos-1) + input_str
             return input_str
         else:
-            if not isinstance(input_str, basestring):
+            if not isinstance(input_str, str):
                 error = "Message not a String"
-            if not isinstance(pos, (int, long, float, complex)):
+            if not isinstance(pos, (int, int, float, complex)):
                 error = "Message Position NaN"
             elif (pos < 1 or pos >= 20):
                 error = "Message Position not 1-20"
             updatescreen(ERRORMSG, SCROLL_SPEED, UPDATE_SCREEN_THREAD_STOP)
-            print error
+            print(error)
             return False
 
     def center_str(input_str):
         """Center the string based on length"""
-        if isinstance(input_str, basestring):
+        if isinstance(input_str, str):
             pad = int(math.floor(((20-len(input_str))/2)))
             input_str = " "*(pad) + input_str
             return input_str
         else:
-            print "Message not a String"
+            print("Message not a String")
             return False
 
     def main():
@@ -140,26 +140,22 @@ if (not lcd_error):
         global UPDATE_SCREEN_THREAD
         global UPDATE_SCREEN_THREAD_STOP
 
-        if sys.version_info >= (3, 0):
-            print "Sorry - currently only configured to work with python 2.x"
-            sys.exit(1)
-
         if CMD == "writelcd":
             if LCD_TYPE == "20x4":
                 while True:
                     try:
-                        data = raw_input()
+                        data = input()
                         if data == 'close':
-                            if UPDATE_SCREEN_THREAD.isAlive():
+                            if UPDATE_SCREEN_THREAD.is_alive():
                                 UPDATE_SCREEN_THREAD_STOP.set()
-                                while UPDATE_SCREEN_THREAD.isAlive():
+                                while UPDATE_SCREEN_THREAD.is_alive():
                                     time.sleep(0.05)
                             updatescreen(SHUTDOWNMSG, SCROLL_SPEED, UPDATE_SCREEN_THREAD_STOP)
                             sys.exit(0)
                         else:
-                            if UPDATE_SCREEN_THREAD.isAlive():
+                            if UPDATE_SCREEN_THREAD.is_alive():
                                 UPDATE_SCREEN_THREAD_STOP.set()
-                                while UPDATE_SCREEN_THREAD.isAlive():
+                                while UPDATE_SCREEN_THREAD.is_alive():
                                     time.sleep(0.05)
                             json_error = False
                             #speederror = False
@@ -168,7 +164,7 @@ if (not lcd_error):
                             try:
                                 data = json.loads(data)
                             except:
-                                print "Input not a JSON Message"
+                                print("Input not a JSON Message")
                                 json_error = True
                             if not json_error:
                                 msg = []
@@ -191,7 +187,7 @@ if (not lcd_error):
                                             if not msg[line]:
                                                 poserror = True
                                         except KeyError:
-                                            print "POS or msg Value Missing"
+                                            print("POS or msg Value Missing")
                                             poserror = True
                                             break
                                 if not poserror and not centererror:
@@ -203,21 +199,21 @@ if (not lcd_error):
                             else:
                                 updatescreen(ERRORMSG, 3, UPDATE_SCREEN_THREAD_STOP)
                     except (EOFError, KeyboardInterrupt):
-                        if UPDATE_SCREEN_THREAD.isAlive():
+                        if UPDATE_SCREEN_THREAD.is_alive():
                             UPDATE_SCREEN_THREAD_STOP.set()
-                            while UPDATE_SCREEN_THREAD.isAlive():
+                            while UPDATE_SCREEN_THREAD.is_alive():
                                 time.sleep(0.05)
                         updatescreen(SHUTDOWNMSG, 3, UPDATE_SCREEN_THREAD_STOP)
                         sys.exit(0)
                     except SystemExit:
-                        if UPDATE_SCREEN_THREAD.isAlive():
+                        if UPDATE_SCREEN_THREAD.is_alive():
                             UPDATE_SCREEN_THREAD_STOP.set()
-                            while UPDATE_SCREEN_THREAD.isAlive():
+                            while UPDATE_SCREEN_THREAD.is_alive():
                                 time.sleep(0.05)
                         updatescreen(SHUTDOWNMSG, 3, UPDATE_SCREEN_THREAD_STOP)
                         sys.exit(0)
         else:
-            print "Bad parameters - accepts writelcd {screensize}"
+            print("Bad parameters - accepts writelcd {screensize}")
 
     if __name__ == '__main__':
         main()
